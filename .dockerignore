@@ -1,99 +1,86 @@
-# Python
+# Next.js / Node
+node_modules
+**/node_modules
+.next
+.next/**
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+.eslintcache
+
+# Legacy Vite frontend — not needed in the Profy Next.js image
+legacy/
+legacy/**
+
+# Python backend — deployed separately, not in this container
+backend/
+backend/**
+cli/
+cli/**
+docker/
+docker/**
+docker-compose*.yml
+Dockerfile.allinone
+*.py
+*.pyc
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-*.egg-info/
-dist/
-build/
-*.egg
 .venv/
 venv/
 env/
 ENV/
+uv.lock
+pyproject.toml
+Pipfile*
 
-# Node
-**/node_modules/
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-.npm
-.eslintcache
-frontend/node_modules/
-frontend/dist/
-frontend/.vite/
-
-# IDE
+# Docs / dev-only
+docs/
+PRD.md
+PROFY_MIGRATION.md
+README_EN.md
+CHANGELOG*.md
+scripts/
+.github/
 .vscode/
 .idea/
+.cursor/
+assets/
+
+# IDE / OS
+.DS_Store
+Thumbs.db
+Desktop.ini
 *.swp
 *.swo
 *~
-.DS_Store
-
-# Project specific
-instance/*.db
-instance/*.db-journal
-uploads/
-*.log
-server.log
-server_running.log
-
-# Test files
-test_*.py
-*_test.py
-tests/
-
-# Docs and examples
-*.md
-!README.md
-docs/
-demo.py
-gemini_genai.py
-generate-example.py
-!assets/**
-*.png
-*.jpg
-*.jpeg
-*.pptx
-*.pdf
-output/
-res.png
-template*.png
-page*.png
+*.lnk
 
 # Git
 .git/
 .gitignore
 
 # Docker
-Dockerfile*
-docker-compose*.yml
 .dockerignore
 
-# Environment variables
+# Environment (built-image should receive env at runtime)
 .env
 .env.local
 .env.*.local
+.env.prod
+!.env.production
+!.env.example
+!.env.prod.example
 
-# Others
-*.lock
-uv.lock
-LICENSE
-PRD.md
-*.md
+# Instance / uploads / runtime data
+instance/
+uploads/
+output/
+*.log
+server.log
+server_running.log
 
-# Windows
-Thumbs.db
-Desktop.ini
-*.lnk
-
-# Build output
+# Misc build artifacts
 dist/
 build/
 *.pptx
 *.pdf
-
