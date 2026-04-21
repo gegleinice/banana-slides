@@ -25,6 +25,32 @@
 !frontend/public/**/*.heic
 !frontend/public/**/*.heif
 !frontend/public/**/*.avif
+!legacy/frontend/public/**/*.png
+!legacy/frontend/public/**/*.jpg
+!legacy/frontend/public/**/*.jpeg
+!legacy/frontend/public/**/*.gif
+!legacy/frontend/public/**/*.bmp
+!legacy/frontend/public/**/*.svg
+!legacy/frontend/public/**/*.webp
+!legacy/frontend/public/**/*.ico
+!legacy/frontend/public/**/*.tiff
+!legacy/frontend/public/**/*.tif
+!legacy/frontend/public/**/*.heic
+!legacy/frontend/public/**/*.heif
+!legacy/frontend/public/**/*.avif
+!public/**/*.png
+!public/**/*.jpg
+!public/**/*.jpeg
+!public/**/*.gif
+!public/**/*.bmp
+!public/**/*.svg
+!public/**/*.webp
+!public/**/*.ico
+!public/**/*.tiff
+!public/**/*.tif
+!public/**/*.heic
+!public/**/*.heif
+!public/**/*.avif
 
 # 保留测试fixtures
 !e2e/fixtures/*.png
@@ -60,3 +86,18 @@ _local_backup/
 !CLA.md 
 !CONTRIBUTING.md
 .venv
+
+# ---------- Next.js / Profy ----------
+node_modules/
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+!.env.local.example
+.env.prod
+.env.production
+!.env.prod.example
+.vercel

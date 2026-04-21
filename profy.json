@@ -1,0 +1,85 @@
+{
+	"$schema": "https://profy-test.agentspro.cn/schema/profy.json",
+	"name": "Banana Slides",
+	"type": "app",
+	"version": "0.3.0",
+	"slug": "banana-slides",
+	"framework": "nextjs",
+
+	"marketplace": {
+		"category": "creative",
+		"tags": ["ppt", "slides", "ai", "nano-banana", "presentation"],
+		"description": "AI-powered PPT generator — turn an idea, outline, or existing PPT into a polished deck in minutes. Powered by nano banana pro.",
+		"icon": "./public/logo.png",
+		"overview": "./README.md"
+	},
+
+	"billing": {
+		"type": "PER_CALL",
+		"freeTrialPerUser": 3,
+		"rules": [
+			{
+				"path": "/api/backend/api/projects",
+				"type": "PER_CALL",
+				"amount": 5,
+				"name": "创建项目"
+			},
+			{
+				"path": "/api/backend/api/projects/:projectId/generate-outline",
+				"type": "PER_CALL",
+				"amount": 10,
+				"name": "生成大纲"
+			},
+			{
+				"path": "/api/backend/api/projects/:projectId/generate-descriptions",
+				"type": "PER_CALL",
+				"amount": 20,
+				"name": "生成描述"
+			},
+			{
+				"path": "/api/backend/api/projects/:projectId/generate-images",
+				"type": "PER_TOKEN",
+				"name": "生成图片（按张计费）"
+			},
+			{
+				"path": "/api/backend/api/projects/:projectId/export",
+				"type": "PER_CALL",
+				"amount": 5,
+				"name": "导出 PPTX/PDF"
+			}
+		]
+	},
+
+	"platform": {
+		"baseUrl": "https://profy-test.agentspro.cn",
+		"appSecret": "",
+		"appUuid": ""
+	},
+
+	"deploy": {
+		"mode": "k8s",
+		"replicas": 1,
+		"platform": "linux/amd64"
+	},
+
+	"build": {
+		"command": "npm run build",
+		"outputDir": ".next",
+		"installCommand": "npm install",
+		"nodeVersion": "20"
+	},
+
+	"runtime": {
+		"memory": 512,
+		"maxInstances": 2,
+		"timeout": 120,
+		"healthCheck": "/api/health"
+	},
+
+	"env": {
+		"BANANA_BACKEND_URL": {
+			"required": true,
+			"description": "Python 业务后端地址（Flask/FastAPI）。Profy 侧只部署前端容器，后端需独立部署，前端通过 /api/backend/* 反向代理过来。"
+		}
+	}
+}

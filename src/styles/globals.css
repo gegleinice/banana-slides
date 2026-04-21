@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+/* Tailwind v4 custom-variant: use .dark class (not prefers-color-scheme) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Tailwind v4 @theme: 注册自定义颜色 / 动画 / 半径 / 阴影 ---------- */
+@theme {
+	/* 字体 */
+	--font-sans: "PingFang SC", "Microsoft YaHei", Inter, system-ui,
+		-apple-system, sans-serif;
+
+	/* Banana 品牌色（静态 + 语义） */
+	--color-banana: var(--banana-yellow);
+	--color-banana-light: var(--banana-yellow-light);
+	--color-banana-dark: var(--banana-yellow-dark);
+	--color-banana-pale: var(--banana-yellow-pale);
+	--color-banana-50: #fff9e6;
+	--color-banana-100: #ffe44d;
+	--color-banana-200: #ffd93d;
+	--color-banana-300: #ffd21f;
+	--color-banana-400: #ffca00;
+	--color-banana-500: #ffd700;
+	--color-banana-600: #ffc700;
+
+	/* 语义 token 映射到 :root / .dark 里定义的 CSS 变量 */
+	--color-background-primary: var(--bg-primary);
+	--color-background-secondary: var(--bg-secondary);
+	--color-background-tertiary: var(--bg-tertiary);
+	--color-background-elevated: var(--bg-elevated);
+	--color-background-hover: var(--bg-hover);
+
+	--color-foreground: var(--text-primary);
+	--color-foreground-primary: var(--text-primary);
+	--color-foreground-secondary: var(--text-secondary);
+	--color-foreground-tertiary: var(--text-tertiary);
+
+	--color-border-primary: var(--border-primary);
+	--color-border-secondary: var(--border-secondary);
+	--color-border-hover: var(--border-hover);
+
+	--color-success: var(--success);
+	--color-warning: var(--warning);
+	--color-error: var(--error);
+	--color-info: var(--info);
+
+	/* 圆角 */
+	--radius-card: 12px;
+	--radius-panel: 16px;
+
+	/* 阴影 */
+	--shadow-yellow: 0 4px 12px rgba(255, 215, 0, 0.3);
+
+	/* 动画 */
+	--animate-shimmer: shimmer 1.5s infinite;
+	--animate-gradient: gradient 3s ease infinite;
+	--animate-gradient-x: gradient-x 2s ease infinite;
+	--animate-float: float 6s ease-in-out infinite;
+	--animate-float-slow: float 8s ease-in-out infinite;
+	--animate-float-delayed: float 7s ease-in-out infinite 1s;
+	--animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+	--animate-fade-in: fadeIn 1s ease-out forwards;
+	--animate-slide-in-up: slideInUp 0.35s ease-out both;
+}
+
+/* ---------- 关键帧定义 ---------- */
+@keyframes slideInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+}
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}
+@keyframes gradient {
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+}
+@keyframes gradient-x {
+	0%,
+	100% {
+		background-position: 0% 0%;
+	}
+	50% {
+		background-position: 100% 0%;
+	}
+}
+
+/* ---------- 原 legacy/frontend/src/index.css 内容 ---------- */
+:root {
+	--banana-yellow: #ffd700;
+	--banana-yellow-light: #ffe44d;
+	--banana-yellow-dark: #ffc700;
+	--banana-yellow-pale: #fff9e6;
+
+	--black: #1a1a1a;
+	--black-80: #4a4a4a;
+	--black-60: #757575;
+	--black-10: #f5f5f5;
+	--white: #ffffff;
+
+	--success: #52c41a;
+	--warning: #faad14;
+	--error: #ff4d4f;
+	--info: #1890ff;
+
+	--transition-fast: 150ms ease-in-out;
+	--transition-base: 250ms ease-in-out;
+	--transition-slow: 350ms ease-in-out;
+
+	--bg-primary: #ffffff;
+	--bg-secondary: #f5f5f5;
+	--bg-tertiary: #fafafa;
+	--bg-elevated: #ffffff;
+	--bg-hover: #f5f5f5;
+
+	--text-primary: #1a1a1a;
+	--text-secondary: #4a4a4a;
+	--text-tertiary: #757575;
+
+	--border-primary: #e5e5e5;
+	--border-secondary: #f0f0f0;
+	--border-hover: #d4d4d4;
+}
+
+.dark {
+	--banana-yellow: #f5a623;
+	--banana-yellow-light: #ffd700;
+	--banana-yellow-dark: #e6930e;
+	--banana-yellow-pale: #2a2520;
+
+	--black: #f5f5f5;
+	--black-80: #d4d4d4;
+	--black-60: #8e8e8e;
+	--black-10: #1e1e24;
+	--white: #13131a;
+
+	--bg-primary: #13131a;
+	--bg-secondary: #1e1e24;
+	--bg-tertiary: #17171e;
+	--bg-elevated: #252530;
+	--bg-hover: #2e2e38;
+
+	--text-primary: #ffffff;
+	--text-secondary: #b0b0b0;
+	--text-tertiary: #6e6e6e;
+
+	--border-primary: #2e2e38;
+	--border-secondary: #252530;
+	--border-hover: #3e3e48;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-tap-highlight-color: transparent;
+	touch-action: manipulation;
+	background-color: var(--bg-primary);
+	color: var(--text-primary);
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-track {
+	background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+	background: var(--banana-yellow);
+	border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--banana-yellow-dark);
+}
+
+/* 描述卡片极轻滚动条 */
+.desc-card-scroll::-webkit-scrollbar {
+	width: 3px;
+}
+.desc-card-scroll::-webkit-scrollbar-track {
+	background: transparent;
+}
+.desc-card-scroll::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+}
+.desc-card-scroll::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+.dark .desc-card-scroll::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.1);
+}
+.dark .desc-card-scroll::-webkit-scrollbar-thumb:hover {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+/* 移动端触摸优化 */
+.touch-manipulation {
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 640px) {
+	.btn-touch-target,
+	button:not(.no-min-touch-target):not([class*="w-"]):not([class*="h-"]),
+	a:not(.no-min-touch-target):not([class*="w-"]):not([class*="h-"]) {
+		min-height: 44px;
+		min-width: 44px;
+	}
+}
+
+.markdown-content {
+	line-height: 1.6;
+}
